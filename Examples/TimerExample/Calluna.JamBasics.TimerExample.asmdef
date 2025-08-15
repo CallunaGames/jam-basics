@@ -1,0 +1,16 @@
+{
+    "name": "Calluna.JamBasics.TimerExample",
+    "rootNamespace": "Calluna.JamBasics.TimerExample",
+    "references": [
+        "GUID:5ca4d93db7579734a800e8efb2ee97fc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
