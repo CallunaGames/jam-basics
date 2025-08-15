@@ -1,0 +1,22 @@
+{
+  "name": "com.calluna.jam-basics",
+  "version": "0.0.1",
+  "displayName": "Calluna Jam Basics",
+  "description": "The Calluna Games basic for game jams",
+  "unity": "6000.0",
+  "unityRelease": "",
+  "documentationUrl": "https://github.com/CallunaGames/jam-basics",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "dependencies": {
+    
+ },
+ "keywords": [
+    "game jam"
+  ],
+  "author": {
+    "name": "Calluna Games",
+    "email": "callunagames.temp@gmail.com",
+    "url": ""
+  }
+}
