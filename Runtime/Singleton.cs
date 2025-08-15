@@ -1,10 +1,11 @@
-using System;
 using UnityEngine;
 
 namespace Calluna.JamBasics
 {
     public class Singleton<TInstance> : MonoBehaviour where TInstance : MonoBehaviour
     {
+        [SerializeField, Header("Singleton")] private bool _dontDestroyOnLoad = false;
+        
         public static TInstance Instance
         {
             get
@@ -36,12 +37,19 @@ namespace Calluna.JamBasics
 
         protected virtual void Awake()
         {
+            if (_dontDestroyOnLoad)
+            {
+                DontDestroyOnLoad(this);
+            }
             SetInstance();
         }
 
         protected virtual void OnDestroy()
         {
-            _instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         private void SetInstance()
@@ -53,7 +61,8 @@ namespace Calluna.JamBasics
             
             if (_instance != null && _instance != this)
             {
-                throw SingletonException.CreateMultipleInstancesException(typeof(TInstance));
+                Destroy(this);
+                return;
             }
             
             _instance = instance;
