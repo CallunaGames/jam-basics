@@ -1,0 +1,14 @@
+{
+    "name": "Calluna.JamBasics.QuitExample",
+    "rootNamespace": "Calluna.JamBasics.QuitExample",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
