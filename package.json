@@ -1,12 +1,12 @@
 {
   "name": "com.calluna.jambasics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Calluna Jam Basics",
   "description": "The Calluna Games basic for game jams",
   "unity": "6000.33",
   "unityRelease": "",
   "documentationUrl": "https://github.com/CallunaGames/jam-basics",
-  "changelogUrl": "https://github.com/CallunaGames/jam-basics/commits/v1.0.0",
+  "changelogUrl": "https://github.com/CallunaGames/jam-basics/compare/v1.0.0...v1.0.1",
   "licensesUrl": "",
   "dependencies": {
     
