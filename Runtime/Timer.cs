@@ -9,10 +9,10 @@ namespace Calluna.JamBasics
         public event Action OnDone;
         public float Percentage => Running ? Mathf.Clamp01(Time / _duration) : 1f;
         public float Time { get; private set; }
-        public bool Running => _coroutine != null;
+        public bool Running => CoroutineHelper.Instance.HasRoutineWith(_instanceId);
         
-        private Coroutine _coroutine;
         private float _duration;
+        private string _instanceId;
         
         public static Timer Create(string name, Transform parent = null)
         {
@@ -20,6 +20,11 @@ namespace Calluna.JamBasics
             timerObject.transform.SetParent(parent, false);
             Timer result = timerObject.AddComponent<Timer>();
             return result;
+        }
+
+        private void Awake()
+        {
+            _instanceId = GetInstanceID().ToString();
         }
 
         private void OnDestroy()
@@ -35,21 +40,14 @@ namespace Calluna.JamBasics
             }
             
             StopTimer();
-            Time = 0;
             _duration = seconds;
-            _coroutine = StartCoroutine(StartTimer());
+            CoroutineHelper.Instance.StartWithID(StartTimer(), _instanceId);
             return this;
         }
 
         public void StopTimer()
         {
-            if (_coroutine == null)
-            {
-                return;
-            }
-            
-            StopCoroutine(_coroutine);
-            _coroutine = null;
+            CoroutineHelper.Instance.StopWithID(_instanceId);
             _duration = 0;
             Time = 0;
         }
@@ -61,8 +59,7 @@ namespace Calluna.JamBasics
                 Time += UnityEngine.Time.deltaTime;
                 yield return null;
             }
-              
-            _coroutine = null;  
+            
             OnDone?.Invoke();
         }
     }

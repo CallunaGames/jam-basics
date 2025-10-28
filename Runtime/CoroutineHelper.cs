@@ -52,6 +52,11 @@ namespace Calluna.JamBasics
             return false;
         }
 
+        public bool HasRoutineWith(string id)
+        {
+            return _coroutines.ContainsKey(id);
+        }
+
         public void ReplaceWithID(IEnumerator enumerator, string id)
         {
             StopWithID(id);
