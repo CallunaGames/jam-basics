@@ -29,7 +29,7 @@ namespace Calluna.JamBasics
 
         private void OnDestroy()
         {
-            StopAllCoroutines();
+            StopTimer();
         }
 
         public Timer StartWith(float seconds)
@@ -47,7 +47,8 @@ namespace Calluna.JamBasics
 
         public void StopTimer()
         {
-            CoroutineHelper.Instance.StopWithID(_instanceId);
+            if(CoroutineHelper.HasInstance)
+                CoroutineHelper.Instance.StopWithID(_instanceId);
             _duration = 0;
             Time = 0;
         }
