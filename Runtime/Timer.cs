@@ -9,7 +9,7 @@ namespace Calluna.JamBasics
         public event Action OnDone;
         public float Percentage => Running ? Mathf.Clamp01(Time / _duration) : 1f;
         public float Time { get; private set; }
-        public bool Running => CoroutineHelper.HasInstance && CoroutineHelper.Instance.HasRoutineWith(_instanceId);
+        public bool Running { get; private set; }
         
         private float _duration;
         private string _instanceId;
@@ -41,6 +41,7 @@ namespace Calluna.JamBasics
             
             StopTimer();
             _duration = seconds;
+            Running = true;
             CoroutineHelper.Instance.StartWithID(StartTimer(), _instanceId);
             return this;
         }
@@ -51,6 +52,7 @@ namespace Calluna.JamBasics
                 CoroutineHelper.Instance.StopWithID(_instanceId);
             _duration = 0;
             Time = 0;
+            Running = false;
         }
 
         private IEnumerator StartTimer()
@@ -61,6 +63,7 @@ namespace Calluna.JamBasics
                 yield return null;
             }
             
+            Running = false;
             OnDone?.Invoke();
         }
     }
