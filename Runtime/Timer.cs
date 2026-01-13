@@ -9,7 +9,7 @@ namespace Calluna.JamBasics
         public event Action OnDone;
         public float Percentage => Running ? Mathf.Clamp01(Time / _duration) : 1f;
         public float Time { get; private set; }
-        public bool Running => CoroutineHelper.Instance.HasRoutineWith(_instanceId);
+        public bool Running => CoroutineHelper.HasInstance && CoroutineHelper.Instance.HasRoutineWith(_instanceId);
         
         private float _duration;
         private string _instanceId;
